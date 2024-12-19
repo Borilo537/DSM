@@ -1,4 +1,4 @@
-// Função para buscar informações do servidor
+
 fetch('/server-info')
     .then(response => response.json())
     .then(data => {

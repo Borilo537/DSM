@@ -1,4 +1,10 @@
-const { botToken, serverId } = require('../info.js');
+require('dotenv').config({ path: '../.env' });
+
+
+const botToken = process.env.BOT_TOKEN;
+const serverId = process.env.SERVER_ID;
+
+
 const express = require("express");
 const { Client, GatewayIntentBits } = require("discord.js");
 const path = require("path");
@@ -18,7 +24,7 @@ client.once("ready", () => {
   console.log(`Bot logado como ${client.user.tag}`);
 });
 
-const guildId = "ID_GUILD";
+const guildId = serverId;
 app.get("/server-info", async (req, res) => {
   try {
     const guild = await client.guilds.fetch(guildId);
@@ -73,7 +79,7 @@ app.get("/members", async (req, res) => {
 
 // Login do bot
 client.login(
-  "moedinha"
+  botToken
 ); 
 
 
