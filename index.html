@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discord Manager</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <div class="view">
+      <nav class="sidebar">
+        <div class="nav-content column">
+          <div class="row topSide">
+            <img src="assets/logo.png" class="logoIcon" />
+            <img src="assets/menu.png" class="menuIcon" />
+          </div>
+          <div class="sideElement row">
+            <img src="assets/home.png" />
+            <p>Início</p>
+          </div>
+          <div class="sideElement row">
+            <img src="assets/person.png" />
+            <p>Cargos</p>
+          </div>
+        </div>
+      </nav>
+
+      <main id="main">
+        <div
+          class="serverInfo column serverInfoSmall"
+          style="align-items: center"
+        >
+          <div id="serverImage"></div>
+          <div class="serverInfoName row">
+            <h1 id="serverName">Território maldito dos infernos</h1>
+            <div class="size"></div>
+          </div>
+        </div>
+        <h1 class="membersLabel">Membros</h1>
+        <div class="top-filters row">
+          <div class="drops row">
+            <div class="drop-manager column">
+              <div class="dropdown">
+                <p>Filtros (1)</p>
+                <img src="assets/downArrow.png" />
+              </div>
+              <form class="drop-content">
+                <label class="checkbox-container">
+                  <input type="checkbox" />
+                  <span class="custom-checkbox"></span>
+                  babaoi
+                </label>
+                <label class="checkbox-container">
+                  <input type="checkbox" />
+                  <span class="custom-checkbox"></span>
+                  babaoi
+                </label>
+                <label class="checkbox-container">
+                  <input type="checkbox" />
+                  <span class="custom-checkbox"></span>
+                  babaoi
+                </label>
+                <label class="checkbox-container">
+                  <input type="checkbox" />
+                  <span class="custom-checkbox"></span>
+                  babaoi
+                </label>
+                <label class="checkbox-container">
+                  <input type="checkbox" />
+                  <span class="custom-checkbox"></span>
+                  babaoi
+                </label>
+              </form>
+            </div>
+            <div class="drop-manager column">
+              <div class="dropdown">
+                <p>Ordenar Por (Peso)</p>
+                <img src="assets/downArrow.png" />
+              </div>
+              <form class="drop-content">
+                <label class="checkbox-container">
+                  <input type="checkbox" />
+                  <span class="custom-checkbox"></span>
+                  Peso
+                </label>
+                <label class="checkbox-container">
+                  <input type="checkbox" />
+                  <span class="custom-checkbox"></span>
+                  A-Z
+                </label>
+              </form>
+            </div>
+          </div>
+
+          <div class="search">
+            <input type="text" placeholder="Pesquisar" />
+            <img src="assets/lupa.png" />
+          </div>
+        </div>
+        <div id="members" class="column"></div>
+      </main>
+    </div>
+  </body>
+  <script src="back/script.js"></script>
+  <script src="js/Popup.js"></script>
+  <script src="js/Sidebar.js"></script>
+  <script src="js/fx.js"></script>
+  <script src="js/Dropdown.js"></script>
+</html>
