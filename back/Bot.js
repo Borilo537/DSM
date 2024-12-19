@@ -1,3 +1,4 @@
+const { botToken, serverId } = require('../info.js');
 const express = require("express");
 const { Client, GatewayIntentBits } = require("discord.js");
 const path = require("path");
