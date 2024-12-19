@@ -12,12 +12,9 @@ fetch('/server-info')
 
 async function fetchMembers() {
     try {
-        const response = await fetch('/members'); // Requisição à rota do servidor
-        const members = await response.json(); // Obtém a resposta em JSON
-        const membersContainer = document.getElementById('members'); // Container para os membros
-
-
-
+        const response = await fetch('/members');
+        const members = await response.json(); 
+        const membersContainer = document.getElementById('members');
 
         members.forEach(member => {
             const memberDiv = document.createElement('div');
