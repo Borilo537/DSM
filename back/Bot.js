@@ -1,8 +1,8 @@
 require('dotenv').config({ path: '../.env' });
 
-
 const botToken = process.env.BOT_TOKEN;
 const serverId = process.env.SERVER_ID;
+console.log(botToken)
 
 
 const express = require("express");
@@ -70,6 +70,7 @@ app.get("/members", async (req, res) => {
       };
     });
 
+
     res.json(membersData);
   } catch (error) {
     console.error("Erro ao buscar membros:", error);
@@ -77,14 +78,32 @@ app.get("/members", async (req, res) => {
   }
 });
 
+app.get("/roles", async (req, res) => {
+  try {
+    const guild = await client.guilds.fetch(guildId);
+    const roles = await guild.roles.fetch();
+
+    const filteredRoles = roles.filter(role => role.name !== '@everyone');
+
+    const rolesData = filteredRoles.map(role => ({
+      name: role.name,
+    }));
+
+    res.status(200).json(rolesData);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Não foi possível buscar os cargos." });
+  }
+});
+
 // Login do bot
 client.login(
   botToken
-); 
+);
 
 
 app.use(express.static(path.join(__dirname, "../")));
 
 app.listen(PORT, () => {
-  console.log(`Servidor rodando em http://localhost:${PORT}`);
+  console.log(`Servidor rodando em http://localhost:${PORT}/home.html`);
 });

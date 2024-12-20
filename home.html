@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <base href="http://localhost:3000/home.html" target="_blank">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Discord Managere</title>
     <link rel="stylesheet" href="css/style.css" />
@@ -19,7 +20,7 @@
             <img src="assets/home.png" />
             <p>Início</p>
           </div>
-          <a href="roles.html" class="sideElement row">
+          <a href="roles.html" class="sideElement row" target="_self">
             <img src="assets/person.png" />
             <p>Cargos</p>
           </a>
@@ -42,47 +43,22 @@
           <div class="drops row">
             <div class="drop-manager column">
               <div class="dropdown">
-                <p>Filtros (1)</p>
+                <p id="firstDropdownText">Filtros (0)</p>
                 <img src="assets/downArrow.png" />
               </div>
-              <form class="drop-content">
-                <label class="checkbox-container">
-                  <input type="checkbox" />
-                  <span class="custom-checkbox"></span>
-                  babaoi
-                </label>
-                <label class="checkbox-container">
-                  <input type="checkbox" />
-                  <span class="custom-checkbox"></span>
-                  babaoi
-                </label>
-                <label class="checkbox-container">
-                  <input type="checkbox" />
-                  <span class="custom-checkbox"></span>
-                  babaoi
-                </label>
-                <label class="checkbox-container">
-                  <input type="checkbox" />
-                  <span class="custom-checkbox"></span>
-                  babaoi
-                </label>
-                <label class="checkbox-container">
-                  <input type="checkbox" />
-                  <span class="custom-checkbox"></span>
-                  babaoi
-                </label>
+              <form class="drop-content" id="roleFilter">
               </form>
             </div>
             <div class="drop-manager column">
               <div class="dropdown">
-                <p>Ordenar Por (Peso)</p>
+                <p>Ordenar Por (Cargo)</p>
                 <img src="assets/downArrow.png" />
               </div>
               <form class="drop-content">
                 <label class="checkbox-container">
                   <input type="checkbox" />
                   <span class="custom-checkbox"></span>
-                  Peso
+                  Cargo
                 </label>
                 <label class="checkbox-container">
                   <input type="checkbox" />
@@ -98,7 +74,9 @@
             <img src="assets/lupa.png" />
           </div>
         </div>
-        <div id="members" class="column"></div>
+        <div id="members" class="column">
+
+        </div>
       </main>
     </div>
   </body>

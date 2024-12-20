@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "bot.js",
   "scripts": {
+    "start": "cd back && nodemon bot.js --watch bot.js --watch script.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,5 +15,8 @@
     "express": "^4.21.2",
     "role": "file:"
   },
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
 }

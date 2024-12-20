@@ -11,18 +11,28 @@ fetch('/server-info')
     });
 
 async function fetchMembers() {
+
     try {
         const response = await fetch('/members');
-        const members = await response.json(); 
+        const members = await response.json();
         const membersContainer = document.getElementById('members');
+        membersContainer.innerHTML = '';
 
-        members.forEach(member => {
+        const checkedFilters = checkFilters();
+
+        const filteredMembers = members.filter(member => {
+            if (checkedFilters.length === 0) {
+                return true;
+            } else {
+                return member.roles.some(role => checkedFilters.includes(role.name));
+            }
+        });
+
+
+
+        filteredMembers.forEach(member => {
             const memberDiv = document.createElement('div');
             memberDiv.id = 'member';
-
-            // const roleColor = member.roles.length > 0 ? member.roles[0].color : '000000';
-
-            // memberDiv.style.backgroundImage = `linear-gradient(to right, #${roleColor}65, #3c4046 40%)`; // Adiciona opacidade à cor (50%)
 
             memberDiv.innerHTML = `
                     <div class="memberInfo row">
@@ -48,6 +58,44 @@ async function fetchMembers() {
             // Adiciona o elemento criado ao container
             membersContainer.appendChild(memberDiv);
         });
+
+        if (filteredMembers.length === 0) {
+            const unfoundContainer = document.createElement('div');
+            unfoundContainer.classList.add('unfound-container');
+
+            unfoundContainer.innerHTML = `
+                    <img src="assets/sad.png">
+                    <h1>Desculpe, não encontramos ninguém...</h1>
+            `;
+
+            // Adiciona o elemento criado ao container
+            membersContainer.appendChild(unfoundContainer);
+        }
+
+    } catch (error) {
+        console.error('Erro ao buscar membros:', error);
+    }
+}
+
+
+async function fetchRoles() {
+    try {
+        const response = await fetch('/roles');
+        const roles = await response.json();
+        const roleFilter = document.getElementById('roleFilter');
+
+        roles.forEach(role => {
+            console.log('CARGO')
+            const filterRoleDiv = document.createElement('label');
+            filterRoleDiv.classList.add('checkbox-container');
+            filterRoleDiv.innerHTML = `
+            <input type="checkbox" />
+                  <span class="custom-checkbox"></span>
+                  ${role.name}
+            `
+
+            roleFilter.appendChild(filterRoleDiv);
+        });
     } catch (error) {
         console.error('Erro ao buscar membros:', error);
     }
@@ -56,3 +104,4 @@ async function fetchMembers() {
 
 // Chama a função para buscar membros quando a página carrega
 document.addEventListener('DOMContentLoaded', fetchMembers);
+document.addEventListener('DOMContentLoaded', fetchRoles);
